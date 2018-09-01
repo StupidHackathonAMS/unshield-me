@@ -19077,15 +19077,15 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/visits").then
   var $info = document.querySelector(".js-visits");
   response.data.history.forEach(function (site) {
     if (site.domain && site.millisecondsSpent) {
-      var _child = document.createElement("div");
+      var child = document.createElement("div");
       var inner = "User spent " + (0, _prettyMs2.default)(site.millisecondsSpent) + " on <a href=" + site.domain + ">" + site.domain + "</a>";
 
       if (site.tags.length) {
         inner += " 🍑🍆";
       }
 
-      _child.innerHTML = inner;
-      $info.appendChild(_child);
+      child.innerHTML = inner;
+      $info.appendChild(child);
     }
   });
 }).catch(function (error) {
@@ -19117,12 +19117,14 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/forms").then(
 _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/questions").then(function (response) {
   console.log(response.data);
   var $info = document.querySelector(".js-questions");
+  var child = document.createElement("div");
 
   response.data.questions.forEach(function (question) {
-    console.log(question);
-  });
+    var inner = "<div><b>Question</b> : " + question.question + "</div><div class=\"answer\"><b>Answer</b> : " + question.answer + "</div>";
 
-  $info.appendChild(child);
+    child.innerHTML = inner;
+    $info.appendChild(child);
+  });
 }).catch(function (error) {
   console.log(error);
 });

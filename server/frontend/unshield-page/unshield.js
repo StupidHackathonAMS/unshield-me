@@ -56,12 +56,16 @@ axios
   .then(function(response) {
     console.log(response.data);
     const $info = document.querySelector(".js-questions");
+    const child = document.createElement("div");
 
     response.data.questions.forEach(question => {
-      console.log(question);
-    });
+      const inner = `<div><b>Question</b> : ${
+        question.question
+      }</div><div class="answer"><b>Answer</b> : ${question.answer}</div>`;
 
-    $info.appendChild(child);
+      child.innerHTML = inner;
+      $info.appendChild(child);
+    });
   })
   .catch(function(error) {
     console.log(error);
