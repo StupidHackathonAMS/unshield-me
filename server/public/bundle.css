@@ -726,6 +726,9 @@ header h1 {
   color: #fff;
   background: #30323d; }
 
+.data {
+  padding-top: 50px; }
+
 .hero {
   padding: 150px 0; }
 

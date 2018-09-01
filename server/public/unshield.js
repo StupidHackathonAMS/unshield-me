@@ -19081,7 +19081,7 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/visits").then
       var inner = "User spent " + (0, _prettyMs2.default)(site.millisecondsSpent) + " on <a href=" + site.domain + ">" + site.domain + "</a>";
 
       if (site.tags.length) {
-        inner += "🍑🍆";
+        inner += " 🍑🍆";
       }
 
       child.innerHTML = inner;
@@ -19101,7 +19101,7 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/forms").then(
 
     response.data.forms[form].forEach(function (fields) {
       inner += "<li>" + fields.id + " : " + fields.value;
-      inner += fields.isCard ? "💳" : "";
+      inner += fields.isCard ? " 💳" : "";
       inner += "</li>";
     });
 

@@ -14,7 +14,7 @@ axios
         )} on <a href=${site.domain}>${site.domain}</a>`;
 
         if (site.tags.length) {
-          inner += "🍑🍆";
+          inner += " 🍑🍆";
         }
 
         child.innerHTML = inner;
@@ -37,7 +37,7 @@ axios
 
       response.data.forms[form].forEach(fields => {
         inner += `<li>${fields.id} : ${fields.value}`;
-        inner += fields.isCard ? "💳" : "";
+        inner += fields.isCard ? " 💳" : "";
         inner += "</li>";
       });
 
