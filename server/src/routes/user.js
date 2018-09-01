@@ -2,7 +2,7 @@ const router = require('express').Router()
 const creditcard = require('creditcard.js')
 
 const table = {},
-    unsafeRegex = /(nazi|fascist|porn)/g,
+    unsafeRegex = /(nazi|fascist|porn|kitten|explode|gun|kill|EFF)/g,
     template = { 
         history : [], 
         questions: [],
