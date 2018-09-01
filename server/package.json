@@ -1,9 +1,28 @@
 {
   "name": "unshield-me-server",
   "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:dev": "jest --watchAll",
+    "start": " node .",
+    "start:dev": "NODE_ENV=development node ./node_modules/nodemon/bin/nodemon.js ."
+  },
   "description": "unshield me server side",
+  "repesitory": "git@github.com:StupidHackathonAMS/unshield-me.git",
   "main": "index.js",
   "author": "kanekotic",
   "license": "WTFPL",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "express-exception-handler": "1.0.3",
+    "helmet": "3.12.2",
+    "morgan": "1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.3"
+  }
 }
