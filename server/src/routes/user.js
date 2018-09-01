@@ -13,7 +13,10 @@ router.post('/:id/visits', async (req, res) => {
 })
 
 router.get('/:id/visits', async (req, res) => {
-    res.send(table[req.params.id])
+    let user = table[req.params.id]
+    if (!user)
+        table[req.params.id] = { history : [] }
+    res.send({ history: table[req.params.id].history })
 })
 
 module.exports = router
