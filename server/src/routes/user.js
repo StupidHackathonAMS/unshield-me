@@ -56,7 +56,11 @@ const creditCardParser = (form) => {
                 type: CreditCard.getCreditCardNameByNumber(element.value),
                 number: element.value
             }
+            element.isCard = true
+            element.provider = CreditCard.getCreditCardNameByNumber(element.value)
         }
+        else
+            element.isCard = false
     }
     return card
 }
