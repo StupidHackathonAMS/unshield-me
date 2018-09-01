@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
+    "build": "rollup -c",
     "test": "jest",
     "test:dev": "jest --watchAll",
     "start": " node .",
@@ -10,11 +11,11 @@
   },
   "description": "unshield me server side",
   "repesitory": "git@github.com:StupidHackathonAMS/unshield-me.git",
-  "main": "index.js",
   "author": "kanekotic",
   "license": "WTFPL",
   "private": false,
   "dependencies": {
+    "axios": "0.18.0",
     "body-parser": "1.18.3",
     "cors": "2.8.4",
     "express": "4.16.3",
@@ -23,6 +24,11 @@
     "morgan": "1.9.0"
   },
   "devDependencies": {
-    "nodemon": "1.18.3"
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-0": "6.24.1",
+    "nodemon": "1.18.3",
+    "rollup": "0.65.0",
+    "rollup-plugin-babel": "3.0.7"
   }
 }
