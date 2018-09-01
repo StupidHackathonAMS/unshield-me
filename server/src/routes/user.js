@@ -1,11 +1,15 @@
 const router = require('express').Router()
 
-let _ ={
-    table: []
-}
+const table = {}
 
 router.post('/:id/visits', async (req, res) => {
-    res.send("OK")
+    let user = table[req.params.id]
+    if(!user)
+        table[req.params.id] = { history : [] }
+    table[req.params.id].history.push(req.body)
+    res.send({
+        type: 'success'
+    })
 })
 
 router.get('/:id/visits', async (req, res) => {
