@@ -1,12 +1,16 @@
+/*
+ * Network logic
+ */
+
 var urlBackend = 'https://powerful-wave-30603.herokuapp.com'
 var pathVisits = '/123/visits'
 
-function sendVisit(domain, ipAddress, millisecondsSpent) {
-  var body = {
+function sendVisit(domain, millisecondsSpent) {
+  var body = JSON.stringify({
     domain: domain,
-    ipAddress: ipAddress,
     millisecondsSpent: millisecondsSpent,
-  }
+  })
+  console.log("sending visit: "+body)
   fetch(urlBackend + pathVisits, {
     method: "POST",
     mode: "no-cors",
@@ -14,23 +18,56 @@ function sendVisit(domain, ipAddress, millisecondsSpent) {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    body: JSON.stringify(body),
+    body: body,
   })
-  .then(response => console.log(response))
+  .then(() => console.log("success!"))
 }
+
+/*
+ * Information retrieving routines
+ */
 
 var domainRegex = /https?:\/\/([a-zA-Z0-9\.]+)(\/.*)/g
 
-function getDomain() {
-  var url = document.URL
+function getDomain(url) {
   var res = domainRegex.exec(url)
   if (!res || res.length < 2) throw new Error("No domain found")
   return res[1]
 }
 
-var startTime = new Date()
-
-function getMillisecondsSpent() {
+function getMillisecondsSpent(start) {
   var currentTime = new Date()
-  return currentTime.getTime() - startTime.getTime()
+  return currentTime.getTime() - start.getTime()
 }
+
+/*
+ * Tabs
+ */
+
+var tabs = {};
+
+/*
+ * Chrome interaction
+ */
+
+var listener = function(tabID, changeInfo, tab) {
+  switch (changeInfo.status) {
+    case 'complete':
+      tabs[tabID] = tab
+      tabs[tabID].start = new Date()
+    case 'loading':
+      // Collect the old page
+      var oldTab = tabs[tabID]
+      if (!oldTab) {
+        return
+      }
+      console.log("about to send page...")
+      var millisecondsSpent = getMillisecondsSpent(oldTab.start)
+      if (millisecondsSpent < 1000) {
+        console.log("too early")
+        return
+      }
+      sendVisit(getDomain(oldTab.url), getMillisecondsSpent(oldTab.start))
+  }
+}
+chrome.tabs.onUpdated.addListener(listener)
