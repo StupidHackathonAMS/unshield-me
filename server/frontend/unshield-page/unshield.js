@@ -11,7 +11,7 @@ axios
         const child = document.createElement("div");
         let inner = `User spent ${prettyMs(
           site.millisecondsSpent
-        )} on <a href=${site.domain}>${site.domain}</a>`;
+        )} on <a href=//${site.domain}>${site.domain}</a>`;
 
         if (site.tags[0]) {
           inner +=
@@ -20,6 +20,11 @@ axios
               : "";
           inner += site.tags.includes("porn") ? " 🍑🍆 " : "";
           inner += site.tags.includes("kitten") ? " 🐱 " : "";
+          inner += site.tags.includes("explode") ? " 💥 " : "";
+          inner +=
+            site.tags.includes("gun") || site.tags.includes("kill")
+              ? " 🔫 "
+              : "";
         }
 
         child.innerHTML = inner;
