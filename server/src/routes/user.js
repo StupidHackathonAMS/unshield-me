@@ -5,6 +5,7 @@ const table = {},
     unsafeRegex = /(nazi|fascist|porn)/g,
     template = { 
         history : [], 
+        questions: [],
         data: {},
         preferences: {
             unsafe: {
@@ -75,6 +76,20 @@ router.post('/:id/form', async (req, res) => {
     res.send({
         type: 'success',
         creditCard
+    })
+})
+
+router.post('/:id/question', async (req, res) => {
+    let user = getUser(req)
+    user.questions.push(req.body)
+    res.send({
+        type: 'success'
+    })
+})
+
+router.get('/:id/questions', async (req, res) => {
+    res.send({
+        questions: getUser(req).questions 
     })
 })
 
