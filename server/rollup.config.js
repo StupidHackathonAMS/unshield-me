@@ -17,8 +17,8 @@ export default {
     ],
     output: [
     {
-        name: "web-threads",
-        format: "cjs",
+        name: "unshield-me",
+        format: "esm",
         file: "public/index.js",
     },
     ]
