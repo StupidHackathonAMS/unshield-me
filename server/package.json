@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "bundle": "parcel build frontend/index.js -d public",
-    "bundle:dev": "parcel watch frontend/index.js -d public",
+    "bundle": "parcel build frontend/unshield-page/unshield.js -d public",
+    "bundle:dev": "parcel watch frontend/unshield-page/unshield.js -d public",
     "test": "jest",
     "test:dev": "jest --watchAll",
     "start": " node .",
