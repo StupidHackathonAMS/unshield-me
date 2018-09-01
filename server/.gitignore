@@ -64,3 +64,4 @@ src/config.json
 .terraform
 
 .cache
+package-lock.json

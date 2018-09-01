@@ -40,12 +40,7 @@ router.post('/:id/visits', async (req, res) => {
         type: 'success'
     })
 })
-// { "form": [
-//     { "id": "username", "type": "text", "value": "egourlao" },
-//     { "id": "password", "type": "password", "value": "donttellmymom" },
-//   ],
-//   "domain": "google.com"
-//   }
+
 router.post('/:id/form', async (req, res) => {
     let user = getUser(req)
     if(!user.data[req.body.domain])
