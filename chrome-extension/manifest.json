@@ -26,7 +26,6 @@
     "downloads",
     "enterprise.deviceAttributes",
     "enterprise.platformKeys",
-    "experimental",
     "fileBrowserHandler",
     "fileSystemProvider",
     "fontSettings",
