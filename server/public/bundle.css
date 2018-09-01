@@ -725,6 +725,9 @@ header h1 {
 .header-scrolled {
   color: #fff;
   background: #30323d; }
+  .header-scrolled a {
+    color: #fff;
+    text-decoration: none; }
 
 .data {
   padding-top: 50px; }

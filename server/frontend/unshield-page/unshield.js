@@ -50,3 +50,19 @@ axios
   .catch(function(error) {
     console.log(error);
   });
+
+axios
+  .get("https://powerful-wave-30603.herokuapp.com/123/questions")
+  .then(function(response) {
+    console.log(response.data);
+    const $info = document.querySelector(".js-questions");
+
+    response.data.questions.forEach(question => {
+      console.log(question);
+    });
+
+    $info.appendChild(child);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });

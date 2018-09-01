@@ -41,6 +41,11 @@ header h1 {
 .header-scrolled {
   color: $bg-color;
   background: $dark-color;
+
+  a {
+    color: $bg-color;
+    text-decoration: none;
+  }
 }
 
 .data {
