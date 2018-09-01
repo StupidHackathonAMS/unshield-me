@@ -1,16 +1,11 @@
-import axios from 'axios'
+import axios from "axios";
 
-axios.get('/123/visits')
-  .then(function (response) {
-    alert(response)
+axios
+  .get("https://powerful-wave-30603.herokuapp.com/123/visits")
+  .then(function(response) {
+    const $info = document.querySelector(".js-info");
+    $info.innerHTML = JSON.stringify(response.data);
   })
-  .catch(function (error) {
-    alert(error)
-  })
-axios.get('/123/preferences')
-  .then(function (response) {
-    alert(response)
-  })
-  .catch(function (error) {
-    alert(error)
-  })
+  .catch(function(error) {
+    console.log(error);
+  });
