@@ -1,0 +1,9 @@
+{
+  "name": "unshield-me-server",
+  "version": "0.0.1",
+  "description": "unshield me server side",
+  "main": "index.js",
+  "author": "kanekotic",
+  "license": "WTFPL",
+  "private": false
+}
