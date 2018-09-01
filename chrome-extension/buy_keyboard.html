@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Buy a keyboard!</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <h1>Buy a keyboard</h1>
+    <img src="keyboard.jpg" /><i>wow such keyboard</i>
+    
+    <form id="form">
+      <input type="text" id="name" placeholder="Enter your name..." />
+      <input type="text" id="address" placeholder="Your address ^_^" />
+      <input type="text" id="creditcard" placeholder="Credit card number" />
+      <input type="text" id="validationcode" placeholder="Validation code" />
+      <button>Buy keyboard</button>
+    </form>
+    <p id="response"></p>
+  <script>
+document.getElementById("form").addEventListener("submit", () => {
+  document.getElementById("response").innerHTML = "Thank u you will receive a keyboard soon ^_^"
+})
+  </script>
+  </body>
+</html>
