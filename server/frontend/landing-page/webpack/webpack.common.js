@@ -1,33 +1,33 @@
-"use strict";
+'use strict';
 
-const Path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const dest = Path.join(__dirname, "../../../public");
+const dest = Path.join(__dirname, '../../../public');
 
 module.exports = {
   entry: [
-    Path.resolve(__dirname, "./polyfills"),
-    Path.resolve(__dirname, "../src/scripts/index")
+    Path.resolve(__dirname, './polyfills'),
+    Path.resolve(__dirname, '../src/scripts/index')
   ],
   output: {
     path: dest,
-    filename: "bundle.[hash].js"
+    filename: 'bundle.[hash].js'
   },
   plugins: [
-    new CleanWebpackPlugin([dest], { root: Path.resolve(__dirname, "..") }),
+    new CleanWebpackPlugin([dest], { root: Path.resolve(__dirname, '..') }),
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, "../public"), to: "public" }
+      { from: Path.resolve(__dirname, '../public'), to: 'public' }
     ]),
     new HtmlWebpackPlugin({
-      template: Path.resolve(__dirname, "../src/index.html")
+      template: Path.resolve(__dirname, '../src/index.html')
     })
   ],
   resolve: {
     alias: {
-      "~": Path.resolve(__dirname, "../src")
+      '~': Path.resolve(__dirname, '../src')
     }
   },
   module: {
@@ -35,16 +35,16 @@ module.exports = {
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "[path][name].[ext]"
+            name: '[path][name].[ext]'
           }
         }
       },
       {
         test: /\.(html)$/,
         use: {
-          loader: "html-loader"
+          loader: 'html-loader'
         }
       }
     ]
