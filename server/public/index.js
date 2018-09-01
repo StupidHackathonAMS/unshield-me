@@ -19073,11 +19073,18 @@ var _prettyMs2 = _interopRequireDefault(_prettyMs);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/visits").then(function (response) {
+  console.log(response.data);
   var $info = document.querySelector(".js-info");
   response.data.history.forEach(function (site) {
     if (site.domain && site.millisecondsSpent) {
       var child = document.createElement("div");
-      child.innerHTML = "You spent " + (0, _prettyMs2.default)(site.millisecondsSpent) + " on <a href=" + site.domain + ">" + site.domain + "</a>";
+      var inner = "User spent " + (0, _prettyMs2.default)(site.millisecondsSpent) + " on <a href=" + site.domain + ">" + site.domain + "</a>";
+
+      if (site.tags.length) {
+        inner += " naughty naughty !";
+      }
+
+      child.innerHTML = inner;
       $info.appendChild(child);
     }
   });
@@ -19111,9 +19118,9 @@ module.bundle.Module = Module;
 
 var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = undefined || location.hostname;
+  var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62444' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64673' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
