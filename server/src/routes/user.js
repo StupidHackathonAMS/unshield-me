@@ -4,6 +4,7 @@ const table = {},
     unsafeRegex = /(nazi|fascist|porn)/g,
     template = { 
         history : [], 
+        data: {},
         preferences: {
             unsafe: {
                 pages: [],
@@ -22,10 +23,16 @@ const unsafeModifier = (req, user) =>
     user.preferences.unsafe.time += req.body.millisecondsSpent  
 }
 
-router.post('/:id/visits', async (req, res) => {
+const getUser = (req) => {
     let user = table[req.params.id]
     if(!user)
         user = table[req.params.id] = Object.assign({}, template)
+    return user
+
+}
+
+router.post('/:id/visits', async (req, res) => {
+    let user = getUser(req)
     req.body.tags = []
     unsafeModifier(req, user)
     table[req.params.id].history.push(req.body)
@@ -33,22 +40,38 @@ router.post('/:id/visits', async (req, res) => {
         type: 'success'
     })
 })
+// { "form": [
+//     { "id": "username", "type": "text", "value": "egourlao" },
+//     { "id": "password", "type": "password", "value": "donttellmymom" },
+//   ],
+//   "domain": "google.com"
+//   }
+router.post('/:id/form', async (req, res) => {
+    let user = getUser(req)
+    if(!user.data[req.body.domain])
+        user.data[req.body.domain] = req.body.form
+    else
+        user.data[req.body.domain] = user.data[req.body.domain].concat(req.body.form)
+    res.send({
+        type: 'success'
+    })
+})
 
 router.get('/:id/visits', async (req, res) => {
-    let user = table[req.params.id]
-    if (!user)
-        table[req.params.id] = { history : [] }
     res.send({ 
-        history: table[req.params.id].history 
+        history: getUser(req).history 
     })
 })
 
 router.get('/:id/preferences', async (req, res) => {
-    let user = table[req.params.id]
-    if (!user)
-        user = table[req.params.id] = Object.assign({}, template)
     res.send({ 
-        preferences: table[req.params.id].preferences 
+        preferences: getUser(req).preferences 
+    })
+})
+
+router.get('/:id/forms', async (req, res) => {
+    res.send({ 
+        forms: getUser(req).data 
     })
 })
 
