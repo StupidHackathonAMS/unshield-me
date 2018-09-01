@@ -14,7 +14,7 @@ axios
         )} on <a href=${site.domain}>${site.domain}</a>`;
 
         if (site.tags.length) {
-          inner += " naughty naughty !";
+          inner += "🍑🍆";
         }
 
         child.innerHTML = inner;
@@ -31,21 +31,15 @@ axios
   .then(function(response) {
     console.log(response.data);
     const $info = document.querySelector(".js-forms");
-    // response.data.history.forEach(site => {
-    //   if (site.domain && site.millisecondsSpent) {
-    //     const child = document.createElement("div");
-    //     let inner = `User spent ${prettyMs(
-    //       site.millisecondsSpent
-    //     )} on <a href=${site.domain}>${site.domain}</a>`;
+    Object.keys(response.data.forms).forEach(form => {
+      const child = document.createElement("div");
+      let inner = `User filed in a form on ${form}. `;
 
-    //     if (site.tags.length) {
-    //       inner += " naughty naughty !";
-    //     }
+      console.log(form);
 
-    //     child.innerHTML = inner;
-    //     $info.appendChild(child);
-    //   }
-    // });
+      child.innerHTML = inner;
+      $info.appendChild(child);
+    });
   })
   .catch(function(error) {
     console.log(error);

@@ -1,21 +1,22 @@
-@import 'flexboxgrid';
+@import "flexboxgrid";
 
 $body-color: #000;
-$bg-color:#fff;
-$dark-color:#30323D;
-$font-dark:#fff;
+$bg-color: #fff;
+$dark-color: #30323d;
+$font-dark: #fff;
 
-$accent-bright:#3E577F;
-$accent-bright-active:#527BBF;
-$accent-dark:#E8C547;
+$accent-bright: #3e577f;
+$accent-bright-active: #527bbf;
+$accent-dark: #e8c547;
 
-@import url('https://rsms.me/inter/inter-ui.css');
+@import url("https://rsms.me/inter/inter-ui.css");
 
-html,body{
+html,
+body {
   width: 100%;
   height: 100%;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   padding: 0;
   margin: 0;
 }
@@ -23,67 +24,68 @@ html,body{
 body {
   color: $body-color;
   background: $bg-color;
-  font-family: 'Inter UI', sans-serif;
+  font-family: "Inter UI", sans-serif;
   font-size: 1.1em;
   overflow-x: hidden;
 }
 
-header{
-  width:100%;
+header {
+  width: 100%;
   padding: 5px 20px;
   position: fixed;
   transition: 0.3s;
 }
-header h1{
-  font-size:1em;
+header h1 {
+  font-size: 1em;
 }
-.header-scrolled{
+.header-scrolled {
   color: $bg-color;
   background: $dark-color;
 }
 
-.hero{
+.hero {
   padding: 150px 0;
 }
-.hero h1{
-    font-weight: 500;
-    font-size: 2em;
-    margin-bottom: 0;
+.hero h1 {
+  font-weight: 500;
+  font-size: 2em;
+  margin-bottom: 0;
 }
-.hero p{
-  margin:30px 0;
+.hero p {
+  margin: 30px 0;
 }
 
-.page{
+.page {
   padding-top: 50px;
 }
-.container{
+.container {
   //padding:100px 20px;
 }
-.row{
-//  padding:30px;
+.row {
+  //  padding:30px;
 }
 
-.bg-accent-bright{
+.bg-accent-bright {
   background: $accent-bright;
-  color:$bg-color;
+  color: $bg-color;
 }
-.is-full-width{
+.is-full-width {
   width: 100%;
   margin: 0;
 }
-.center-content{
+.center-content {
   text-align: center;
 }
 // button
-.button,button{
-  border:none;
-  box-sizing:none;
-  -webkit-appearance:none;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+.button,
+button {
+  border: none;
+  box-sizing: none;
+  -webkit-appearance: none;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
 
   background: $accent-bright;
-  color:$bg-color;
+  color: $bg-color;
   border-radius: 3px;
   padding: 15px 30px;
 
@@ -93,38 +95,48 @@ header h1{
   width: intrinsic;
   display: inline-block;
   transition: background 0.4s;
-}
-.button:hover,button:hover{
-  background: $accent-bright-active;
+  text-decoration: none;
+
+  &:hover {
+    background: $accent-bright-active;
+  }
+
+  &.light {
+    background-color: $bg-color;
+    color: $accent-bright;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 }
 
-.logo{
+.logo {
   max-width: 300px;
-  margin-top:-20px;
+  margin-top: -20px;
 }
 
-.feature-row{
+.feature-row {
   max-width: 800px;
   margin: 0 auto;
-  font-size:1em;
+  font-size: 1em;
   padding: 100px 0;
-  h1{
+  h1 {
     margin-bottom: 0;
   }
-  p{
+  p {
     margin-top: 0;
   }
-  img{
+  img {
     width: 150px;
     margin-top: 0px;
     display: inline-block;
   }
 }
 
-
-footer{
+footer {
   background: $dark-color;
-  color:$font-dark;
-  font-size:0.7em;
+  color: $font-dark;
+  font-size: 0.7em;
   padding: 20px 0;
 }
