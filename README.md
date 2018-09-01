@@ -4,7 +4,7 @@
 
 ## What is this stuff?
 
-Is a chrome extension, a backend and a frontend. That tracks all your activity in the browser and makes it public. It contains the next set of features:
+Is a chrome extension, backend app and frontend app. That tracks all your activity in the browser and makes it public. It contains the next set of features:
 * Log data from pages you visited.
 * Log time spent in pages.
 * Automatig tagging of pages visited.
@@ -16,7 +16,7 @@ Is a chrome extension, a backend and a frontend. That tracks all your activity i
 
 Definetly you should not use it, it would be a really bad idea. But if you use it the responsability is on you.
 
-## Why did you do this?
+## So... why did you do this?
 
 We created this at the [Stupid Hackathon 2018](https://stupidhackathon.wtf) in Amsterdam, in which attendees are challenged to build something amazing, stupid, and useless.
 
