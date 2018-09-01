@@ -19095,11 +19095,17 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/visits").then
 _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/forms").then(function (response) {
   console.log(response.data);
   var $info = document.querySelector(".js-forms");
-  Object.keys(response.data.forms).forEach(function (form) {
+  Object.keys(response.data.forms).forEach(function (form, index) {
     var child = document.createElement("div");
-    var inner = "User filed in a form on " + form + ". ";
+    var inner = "User filed in a form on " + form + " :<ul>";
 
-    console.log(form);
+    response.data.forms[form].forEach(function (fields) {
+      inner += "<li>" + fields.id + " : " + fields.value;
+      inner += fields.isCard ? "💳" : "";
+      inner += "</li>";
+    });
+
+    inner += "</ul>";
 
     child.innerHTML = inner;
     $info.appendChild(child);

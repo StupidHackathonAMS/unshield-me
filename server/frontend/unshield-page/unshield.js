@@ -31,11 +31,17 @@ axios
   .then(function(response) {
     console.log(response.data);
     const $info = document.querySelector(".js-forms");
-    Object.keys(response.data.forms).forEach(form => {
+    Object.keys(response.data.forms).forEach((form, index) => {
       const child = document.createElement("div");
-      let inner = `User filed in a form on ${form}. `;
+      let inner = `User filed in a form on ${form} :<ul>`;
 
-      console.log(form);
+      response.data.forms[form].forEach(fields => {
+        inner += `<li>${fields.id} : ${fields.value}`;
+        inner += fields.isCard ? "💳" : "";
+        inner += "</li>";
+      });
+
+      inner += "</ul>";
 
       child.innerHTML = inner;
       $info.appendChild(child);
