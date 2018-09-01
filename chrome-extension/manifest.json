@@ -65,5 +65,14 @@
     "webNavigation",
     "webRequest",
     "webRequestBlocking"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["script.js"]
+    }
   ]
 }
