@@ -19080,8 +19080,10 @@ _axios2.default.get("https://powerful-wave-30603.herokuapp.com/123/visits").then
       var child = document.createElement("div");
       var inner = "User spent " + (0, _prettyMs2.default)(site.millisecondsSpent) + " on <a href=" + site.domain + ">" + site.domain + "</a>";
 
-      if (site.tags.length) {
-        inner += " 🍑🍆";
+      if (site.tags[0]) {
+        inner += site.tags.includes("nazi") || site.tags.includes("fascist") ? " 👨 " : "";
+        inner += site.tags.includes("porn") ? " 🍑🍆 " : "";
+        inner += site.tags.includes("kitten") ? " 🐱 " : "";
       }
 
       child.innerHTML = inner;

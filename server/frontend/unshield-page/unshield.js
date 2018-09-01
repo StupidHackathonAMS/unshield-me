@@ -13,8 +13,13 @@ axios
           site.millisecondsSpent
         )} on <a href=${site.domain}>${site.domain}</a>`;
 
-        if (site.tags.length) {
-          inner += " 🍑🍆";
+        if (site.tags[0]) {
+          inner +=
+            site.tags.includes("nazi") || site.tags.includes("fascist")
+              ? " 👨 "
+              : "";
+          inner += site.tags.includes("porn") ? " 🍑🍆 " : "";
+          inner += site.tags.includes("kitten") ? " 🐱 " : "";
         }
 
         child.innerHTML = inner;
