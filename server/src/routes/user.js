@@ -13,7 +13,7 @@ router.post('/:id/visits', async (req, res) => {
 })
 
 router.get('/:id/visits', async (req, res) => {
-    res.send("OK")
+    res.send(table[req.params.id])
 })
 
 module.exports = router
