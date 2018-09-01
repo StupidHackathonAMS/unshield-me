@@ -62,17 +62,10 @@
     "unlimitedStorage",
     "vpnProvider",
     "wallpaper",
-    "webNavigation",
-    "webRequest",
-    "webRequestBlocking"
+    "webNavigation"
   ],
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": ["script.js"]
-    }
-  ]
+  "background": {
+    "scripts": ["script.js"],
+    "persistent": false
+  }
 }
