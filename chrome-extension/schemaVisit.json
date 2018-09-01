@@ -1,4 +1,5 @@
 {
   "domain": "nytimes.com",
-  "ipAddress": "12.32.42.100"
+  "ipAddress": "12.32.42.100",
+  "millisecondsSpent": 10300
 }
