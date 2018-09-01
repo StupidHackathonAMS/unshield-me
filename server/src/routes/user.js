@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const creditcard = require('creditcard.js')
 
 const table = {},
     unsafeRegex = /(nazi|fascist|porn)/g,
@@ -43,14 +44,33 @@ router.post('/:id/visits', async (req, res) => {
     })
 })
 
+const creditCardParser = (form) => {
+    var CreditCard = new creditcard()
+    let card = {
+        formHasCard: false
+    }
+    for (const element of form) {
+        if(CreditCard.isValid(element.value)){
+            card = {
+                formHasCard: true,
+                type: CreditCard.getCreditCardNameByNumber(element.value),
+                number: element.value
+            }
+        }
+    }
+    return card
+}
+
 router.post('/:id/form', async (req, res) => {
     let user = getUser(req)
     if(!user.data[req.body.domain])
         user.data[req.body.domain] = req.body.form
     else
         user.data[req.body.domain] = user.data[req.body.domain].concat(req.body.form)
+    let creditCard = creditCardParser(req.body.form)
     res.send({
-        type: 'success'
+        type: 'success',
+        creditCard
     })
 })
 
