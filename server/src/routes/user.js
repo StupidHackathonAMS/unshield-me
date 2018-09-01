@@ -17,7 +17,9 @@ const unsafeModifier = (req, user) =>
 {
     if(!unsafeRegex.test(req.body.domain))
         return
-    req.body.tags.push("unsafe")  
+    req.body.tags.push("unsafe") 
+    let match = req.body.domain.match(unsafeRegex)
+    req.body.tags = req.body.tags.concat(match)
     if(!user.preferences.unsafe.pages.includes(req.body.domain))
         user.preferences.unsafe.pages.push(req.body.domain)  
     user.preferences.unsafe.time += req.body.millisecondsSpent  
