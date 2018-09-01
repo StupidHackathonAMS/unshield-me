@@ -13,10 +13,10 @@ function sendVisit(domain, millisecondsSpent) {
   console.log("sending visit: "+body)
   fetch(urlBackend + pathVisits, {
     method: "POST",
-    mode: "no-cors",
+    mode: "cors",
     cache: "no-cache",
     headers: {
-      "Content-Type": "application/json; charset=utf-8",
+      "Content-Type": "application/json",
     },
     body: body,
   })
