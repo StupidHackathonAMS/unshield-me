@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bundle": "parcel build frontend/index.js -d public",
+    "bundle:dev": "parcel frontend/index.js -d public",
     "test": "jest",
     "test:dev": "jest --watchAll",
     "start": " node .",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "nodemon": "1.18.3",
+    "parcel": "1.9.7",
     "parcel-bundler": "^1.9.7"
   }
 }
