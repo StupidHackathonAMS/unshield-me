@@ -65,9 +65,19 @@
     "webNavigation"
   ],
   "background": {
-    "scripts": ["script.js"],
+    "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "pageScript.js"
+      ]
+    }
+  ],
   "browser_action": {
     "default_icon": "logo_icon.png",
     "default_title": "Unshield Me"
